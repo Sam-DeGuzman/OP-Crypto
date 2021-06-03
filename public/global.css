@@ -78,6 +78,10 @@ button:focus {
   animation: slide-up-fade-in 0.5s;
 }
 
+#status {
+  animation: transitionIn 0.75s;
+}
+
 @keyframes transitionIn {
   from {
     opacity: 0;

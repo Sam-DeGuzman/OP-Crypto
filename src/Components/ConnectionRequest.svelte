@@ -1,22 +1,29 @@
 <script>
   let disabled = false;
 
+  web3.eth.getAccounts().then(function (res) {
+    if (res.length != 0) {
+      document.querySelector("#havemetamask").style.display = "none";
+    }
+  });
+
   async function requestConnection() {
     disabled = true;
-    await ethereum.request({ method: "eth_requestAccounts" });
-    disabled = false;
+    const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+    document.querySelector("#havemetamask").style.display = "none";
+    location.reload();
   }
 </script>
 
 <!-- Initiate a connection request in response to button click action-->
 <article
   id="havemetamask"
-  class="max-w-md mx-auto mt-5 p-5 rounded-lg shadow-lg"
+  class="max-w-md mr-5 p-5 rounded-lg shadow-lg text-center"
 >
   <img src="have_metamask.png" alt="" class="w-44 mx-auto" />
   <h1 class="text-lg">Metamask is Present!</h1>
 
-  <p>Request A Connection</p>
+  <p>Login to Request A Connection</p>
 
   <button
     on:click={requestConnection}
