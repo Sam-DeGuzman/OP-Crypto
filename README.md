@@ -42,4 +42,10 @@ If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommen
 ## References
 
 Only initiate a connection request in response to direct user action.
-https://docs.metamask.io/guide/getting-started.html#connecting-to-metamask
+[Metamask.io Docs Reference](https://docs.metamask.io/guide/getting-started.html#connecting-to-metamask)
+
+Overpowered Token Contract - [Etherscan Contract Page](https://ropsten.etherscan.io/address/0x549c0b653fb0645aba8e84f6aaccb144b06c057a)
+
+_Deployed Using [Remix](https://remix.ethereum.org/)_
+
+Overpowered Token - [Etherscan Token Page](https://ropsten.etherscan.io/token/0x549c0b653fb0645aba8e84f6aaccb144b06c057a)

@@ -15,6 +15,12 @@
       address = "No account connected...";
     }
   });
+
+  function copyETH() {
+    const cb = navigator.clipboard;
+    const paragraph = document.querySelector("#eth_address");
+    cb.writeText(paragraph.innerText).then(() => alert("Address copied"));
+  }
 </script>
 
 <aside id="status" class="w-full p-3 mx-auto bg-indigo-300">
@@ -22,9 +28,19 @@
     <span class="font-bold text-md md:ml-10 lg:ml-10 uppercase">Network:</span>
     <span class="capitalize">{network}</span>
     <span
-      class="font-bold text-md block  md:ml-10 md:inline lg:ml-10 lg:inline uppercase "
+      class="font-bold text-md block mt-2  md:ml-10 md:inline lg:ml-10 lg:inline uppercase "
       >ETH Address:
     </span>
-    <span>{address}</span>
+
+    {#if address != "No account connected..."}
+      <span id="eth_address"
+        >{address}
+        <button on:click={copyETH} class="w-7 ml-2 bg-gray-200 rounded-md">
+          <i class="far fa-copy" />
+        </button></span
+      >
+    {:else}
+      <span>{address}</span>
+    {/if}
   </div>
 </aside>
