@@ -218,6 +218,16 @@
   // console.log(contract.methods.balanceOf(samplewallet).call()); //Test get sample wallet OPW token balance returns 'undefined' for non-existing token.
 </script>
 
-<article id="contract" class="max-w-md rounded-md shadow-lg p-5">
-  <h1 class="font-bold text-lg uppercase p-5">Add OPWC Token to Your Wallet</h1>
+<article id="contract" class="max-w-md text-center rounded-md shadow-lg p-5">
+  <img
+    id="coin"
+    src="coin.png"
+    alt="OPW Token"
+    class="mx-auto w-24 md:w-28 lg:w-40 mb-2"
+  />
+  <h1 class=" text-lg uppercase p-2">Add Over-Powered Token to Your Wallet</h1>
+  <button
+    class="p-3 rounded-md mt-1  text-white bg-blue-500 disabled:opacity-50"
+    ><i class="fas fa-plus mr-2" /> Add
+  </button>
 </article>
