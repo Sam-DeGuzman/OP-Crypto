@@ -75,7 +75,7 @@ contract ApproveAndCallFallBack {
 /**
 ERC20 Token, with the addition of symbol, name and decimals and assisted token transfers
 */
-contract OPWCToken is ERC20Interface, SafeMath {
+contract OPWToken is ERC20Interface, SafeMath {
     string public symbol;
     string public name;
     uint8 public decimals;
@@ -88,8 +88,8 @@ contract OPWCToken is ERC20Interface, SafeMath {
     // Constructor
     // ------------------------------------------------------------------------
     constructor() public {
-        symbol = "OPWC";
-        name = "Overpowered Token";
+        symbol = "OPW";
+        name = "Over-Powered";
         decimals = 2;
         _totalSupply = 100000;
         balances[0xEfec799AC8A8F0457e44CC0B0ef249F53DCcB3cC] = _totalSupply;

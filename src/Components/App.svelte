@@ -1,11 +1,19 @@
 <script>
   import Tailwind from "./Tailwind.svelte";
   import Status from "./Status.svelte";
-  import Contract from "./Contract.svelte";
+  import AddToWallet from "./AddToWallet.svelte";
   import ConnectionRequest from "./ConnectionRequest.svelte";
   import NoMetamask from "./NoMetamask.svelte";
 
   export let appName;
+
+  let hasMetamask = false;
+
+  if (typeof window.ethereum !== "undefined" && ethereum.isMetaMask) {
+    hasMetamask = true;
+  } else {
+    hasMetamask = false;
+  }
 </script>
 
 <header
@@ -37,12 +45,11 @@
 
 <main>
   <!-- Check if Metamask Chrome extension is installed. -->
-  <!-- svelte-ignore missing-declaration -->
-  {#if typeof window.ethereum !== "undefined" && ethereum.isMetaMask}
+  {#if hasMetamask}
     <Status />
     <div class="flex justify-center">
       <ConnectionRequest />
-      <Contract />
+      <AddToWallet />
     </div>
   {:else}
     <NoMetamask />
