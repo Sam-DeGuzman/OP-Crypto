@@ -1,10 +1,4 @@
 <script>
-  web3.eth.getAccounts().then(function (account) {
-    if (account.length == 0) {
-      document.querySelector("#contract").style.display = "none";
-    }
-  });
-
   let contract_abi = [
     {
       constant: true,
@@ -198,23 +192,41 @@
       type: "event",
     },
   ];
+  let currentWallet = "";
 
-  // async function fetchAbi() {
-  //   let response = await fetch("abi.json");
-  //   let data = await response.json();
-  //   data = JSON.stringify(data);
-  //   data = JSON.parse(data);
-
-  //   return data;
-  // }
   let contract_add = "0x496013D89b773C00fa431A3837F2d1d75EDE4aEC"; // OPW Token contract address
-  let samplewallet = "0xEfec799AC8A8F0457e44CC0B0ef249F53DCcB3cC"; //current connected Metamask account ETH address
 
-  let contract = new web3.eth.Contract(contract_abi, contract_add); //Instantiate contract for OPW Token
+  let tokenOwnerWallet = "0xEfec799AC8A8F0457e44CC0B0ef249F53DCcB3cC"; //ETH address used for deploying contract
+
+  // let contract = new web3.eth.Contract(contract_abi, contract_add); //Instantiate contract for OPW Token
+
+  let contract_inst = new web3.eth.Contract(contract_abi, contract_add);
+
+  web3.eth.getAccounts().then(function (account) {
+    if (account.length == 0) {
+      document.querySelector("#contract").style.display = "none";
+    } else {
+      currentWallet = account;
+    }
+  });
+
+  function addToWallet() {
+    let quantity = document.querySelector("#quantity").value;
+    console.log(currentWallet);
+    console.log(tokenOwnerWallet);
+    console.log(quantity);
+    console.log(contract_inst.methods);
+    contract_inst.methods.approve(currentWallet, quantity);
+    contract_inst.methods.transferFrom(
+      tokenOwnerWallet,
+      currentWallet,
+      quantity
+    );
+  }
 
   // web3.eth.getBalance(samplewallet).then(console.log); //Test get sample wallet ETH balance
 
-  // console.log(contract.methods); //Get Contract methods
+  // console.log(contract_inst.methods); //Get Contract methods
   // console.log(contract.methods.balanceOf(samplewallet).call()); //Test get sample wallet OPW token balance returns 'undefined' for non-existing token.
 </script>
 
@@ -223,11 +235,24 @@
     id="coin"
     src="coin.png"
     alt="OPW Token"
-    class="mx-auto w-24 md:w-28 lg:w-40 mb-2"
+    class="mx-auto w-20 md:w-24 lg:w-38 mb-2"
   />
   <h1 class=" text-lg uppercase p-2">Add Over-Powered Token to Your Wallet</h1>
+
+  <label for="quantity">Quantity</label>
+  <input
+    id="quantity"
+    type="number"
+    class="w-20 p-1"
+    min="0"
+    placeholder="0"
+    value="0"
+  />
+
   <button
-    class="p-3 rounded-md mt-1  text-white bg-blue-500 disabled:opacity-50"
+    on:click={addToWallet}
+    id="quantity"
+    class="p-3 rounded-md mt-3 block mx-auto text-white bg-blue-500 disabled:opacity-50"
     ><i class="fas fa-plus mr-2" /> Add
   </button>
 </article>
