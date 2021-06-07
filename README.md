@@ -4,6 +4,8 @@
 
 This is project serves as a compliance to the WEB DEVELOPER SKILL TEST of OutPlay Games.
 
+Vercel app : [Overpowered](https://op-crypto-6aypo4kio-sam-deguzman.vercel.app)
+
 To quickly grab this project without using `git clone` we recommend installing [degit](https://github.com/Rich-Harris/degit):
 
 ```bash
