@@ -1,6 +1,6 @@
 ---
 
-# OP-Crypto Svelte App
+# Overpowered Svelte Dapp
 
 This is project serves as a compliance to the WEB DEVELOPER SKILL TEST of OutPlay Games.
 
